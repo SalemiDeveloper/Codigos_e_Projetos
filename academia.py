@@ -56,6 +56,9 @@ def cadastrar(usuarios):
 
         print("Usuário criando com sucesso, agora você EXISTE NO SISTEMA meu amigo.")
 
+def login():
+    
+
 
 def filtrar_usuario(cpf, usuarios):
     usuarios_filtrados = [usuario for usuario in usuarios if usuario["cpf"] == cpf]
@@ -86,5 +89,15 @@ def main():
 
         elif opcao == "2":
             cadastrar(usuarios)
+
+        elif opcao == "3":
+            login()
+            
+        elif opcao == "4":
+            print("Até a próxima!")
+
+        else:
+            print("\nOperaçãi inválida. Selecione novamente.")
+
 
 main()
