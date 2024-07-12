@@ -1,8 +1,9 @@
+# importando as bibliotecas
 import tkinter as tk
 from tkinter import ttk, font, messagebox
 from tkinter import PhotoImage
 
-# Criando a janela
+# criando a janela
 janela = tk.Tk()
 janela.title("Meu App de Tarefas")
 janela.configure(bg="#F0F0F0")
@@ -10,7 +11,7 @@ janela.geometry("500x600")
 
 frame_em_edicao = None
 
-# Função adicionar Tarefa
+# criando a função de adicionar tarefas
 def adicionar_tarefa():
     global frame_em_edicao
 
@@ -51,17 +52,20 @@ def preparar_edicao(frame_tarefa, label_tarefa):
     entrada_tarefa.delete(0, tk.END)
     entrada_tarefa.insert(0, label_tarefa.cget("text"))
 
+# autoexplicativo
 def atualizar_tarefa(nova_tarefa):
     global frame_em_edicao
     for widget in frame_em_edicao.winfo_children():
         if isinstance(widget, tk.Label):
             widget.config(text=nova_tarefa)
 
+# autoexplicativo
 def deletar_tarefa(frame_tarefa):
     frame_tarefa.destroy()
     canvas_interior.update_idletasks()
     canvas.config(scrollregion=canvas.bbox("all"))
 
+# sublinhar as tarefas concluídas
 def alternar_sublinhado(label):
     fonte_atual = label.cget("font")
     if "overstrike" in fonte_atual:
@@ -70,6 +74,7 @@ def alternar_sublinhado(label):
         nova_fonte = fonte_atual + " overstrike"
     label.config(font=nova_fonte)
 
+# ícones de editar e deletar
 icon_editar = PhotoImage(file="edit.png")
 icon_deletar = PhotoImage(file="delete.png")
 
@@ -85,7 +90,7 @@ entrada_tarefa.pack(side=tk.LEFT, padx=10)
 botao_adicionar = tk.Button(frame, command=adicionar_tarefa, text="Adicionar Tarefa", bg="#4CAF50", fg="white", height=1, width=15, font=("Roboto", 11), relief=tk.FLAT)
 botao_adicionar.pack(side=tk.LEFT, padx=10)
 
-# Criar um frame para a lista de tarefas com rolagem
+# criando um frame para a lista de tarefas com rolagem
 frame_lista_tarefas = tk.Frame(janela, bg="white")
 frame_lista_tarefas.pack(fill=tk.BOTH, expand=True, padx=10, pady=10)
 
